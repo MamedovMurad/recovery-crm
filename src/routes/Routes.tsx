@@ -46,7 +46,7 @@ const AllRoutes = (props: RouteProps) => {
                   <Navigate
                     to={{
                       pathname: "/auth/login",
-                      search: "next=" + route.path,
+                    
                     }}
                   />
                 ) : (

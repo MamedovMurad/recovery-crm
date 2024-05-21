@@ -73,7 +73,9 @@ const Login = () => {
 loginAdmin(formData).then((data:any)=>{
   localStorage.setItem('agent',data?.data?.token)
   toast.success('You are logging in')
-navigate('/')
+if (localStorage.getItem('agent')) {
+  navigate('/dashboard')
+}
 })
 
   };
