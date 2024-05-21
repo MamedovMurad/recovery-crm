@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Map, GoogleApiWrapper, Marker, InfoWindow, Polyline } from "google-maps-react";
+
 import { PageBreadcrumb } from "../../../../components";
 
 interface MapContainerProps {
@@ -20,13 +20,7 @@ const BasicGoogleMap = ({ google }: MapContainerProps) => {
       <div className="p-6">
         <div className="mb-3">
           <div id="gmaps-basic" className="gmaps relative overflow-hidden">
-            <Map
-              google={google}
-              initialCenter={{ lat: -12.043333, lng: -77.028333 }}
-              zoomControlOptions={{
-                position: google.maps.ControlPosition.LEFT_TOP,
-              }}
-            ></Map>
+    
           </div>
         </div>
       </div>
@@ -64,39 +58,7 @@ const MapWithMarkers = ({ google }: MapContainerProps) => {
       <div className="p-6">
         <div className="mb-3">
           <div id="gmaps-markers" className="gmaps relative overflow-hidden">
-            <Map
-              google={google}
-              zoom={18}
-              initialCenter={{ lat: 21.569874, lng: 71.5893798 }}
-              style={{ width: '100%', height: '100%', position: 'relative' }}
-              zoomControlOptions={{
-                position: google.maps.ControlPosition.LEFT_TOP,
-              }}
-            >
-              <Marker
-                title={'This is sweet home.'}
-                name={'Home sweet home!'}
-                position={{ lat: 21.569874, lng: 71.5893798 }}
-                onClick={onBasicMarkerClick}
-              ></Marker>
-
-              <Marker
-                name="Current location"
-                title={"Marker with InfoWindow"}
-                position={{ lat: 21.56969, lng: 71.5893798 }}
-                onClick={onMarkerClick}
-
-              ></Marker>
-              <InfoWindow
-                marker={activeMarker}
-                onClose={onInfoWindowClose}
-                visible={showingInfoWindow}
-              >
-                <div>
-                  <p>{selectedPlace.name}</p>
-                </div>
-              </InfoWindow>
-            </Map>
+       
           </div>
         </div>
       </div>
@@ -127,17 +89,7 @@ const StreetViewMap = ({ google }: MapContainerProps) => {
       <div className="p-6">
         <div className="mb-3">
           <div id="panorama" className="gmaps relative overflow-hidden">
-            <Map
-              google={google}
-              ref={(map: any) => (mapRef = map)}
-              zoom={14}
-              initialCenter={{ lat: 40.7295174, lng: -73.9986496 }}
-              style={{ width: "100%", height: "100%", position: "relative" }}
-              streetViewControl={true}
-              onReady={() => {
-                activateStreetView({ lat: 40.7295174, lng: -73.9986496 });
-              }}
-            ></Map>
+
           </div>
         </div>
       </div>
@@ -154,24 +106,7 @@ const PolyLineMap = ({ google }: MapContainerProps) => {
       <div className="p-6">
         <div className="mb-3">
           <div id="gmaps-types" className="gmaps relative overflow-hidden">
-            <Map
-              className="map"
-              google={google}
-              zoom={14}
-              style={{ width: "100%", height: "100%", position: "relative" }}
-              zoomControlOptions={{
-                position: google.maps.ControlPosition.LEFT_TOP,
-              }}
-            >
-              <Polyline
-                fillColor="#0000FF"
-                fillOpacity={0.35}
-                path={polyline}
-                strokeColor="#0000FF"
-                strokeOpacity={0.8}
-                strokeWeight={2}
-              />
-            </Map>
+          
           </div>
         </div>
       </div>
@@ -254,15 +189,7 @@ const LightStyledMap = ({ google }: MapContainerProps) => {
       <div className="p-6">
         <div className="mb-3">
           <div id="ultra-light" className="gmaps relative overflow-hidden">
-            <Map
-              google={google}
-              initialCenter={{ lat: -12.043333, lng: -77.028333 }}
-              style={{ width: "100%", height: "100%", position: "relative" }}
-              styles={mapStyles}
-              zoomControlOptions={{
-                position: google.maps.ControlPosition.LEFT_TOP,
-              }}
-            ></Map>
+
           </div>
         </div>
       </div>
@@ -359,15 +286,7 @@ const DarkStyledMap = ({ google }: MapContainerProps) => {
       <div className="p-6">
         <div className="mb-3">
           <div id="dark" className="gmaps relative overflow-hidden">
-            <Map
-              google={google}
-              initialCenter={{ lat: -12.043333, lng: -77.028333 }}
-              style={{ width: "100%", height: "100%", position: "relative" }}
-              styles={mapStyles}
-              zoomControlOptions={{
-                position: google.maps.ControlPosition.LEFT_TOP,
-              }}
-            ></Map>
+
           </div>
         </div>
       </div>
@@ -390,6 +309,3 @@ const GoogleMaps = ({ google }: MapContainerProps) => {
   )
 };
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyDsucrEdmswqYrw0f6ej3bf4M4suDeRgNA",
-})(GoogleMaps)

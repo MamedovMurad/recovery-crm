@@ -118,7 +118,7 @@ const Chart = React.lazy(() => import("../pages/ui/Chart"));
 
 // maps
 const VectorMaps = React.lazy(() => import("../pages/ui/maps/VectorMaps"));
-const GoogleMaps = React.lazy(() => import("../pages/ui/maps/GoogleMaps"));
+
 
 export interface RoutesProps {
   path: RouteProps["path"];
@@ -651,7 +651,7 @@ const uiRoutes: RoutesProps = {
         {
           path: "/ui/maps/google-maps",
           name: "Google Maps",
-          element: <GoogleMaps />,
+          element: < ></>,
           route: PrivateRoute,
         },
       ],

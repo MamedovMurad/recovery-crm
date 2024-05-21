@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Joyride, { STATUS } from "react-joyride";
+
 
 //images
 import logoDark from '../../../assets/images/logo-dark.png'
@@ -38,24 +38,15 @@ const TourPage = () => {
 
   const handleJoyrideCallback = (data: any) => {
     const { status } = data;
-    const finishedStatuses: string[] = [STATUS.FINISHED, STATUS.SKIPPED];
+ 
 
-    if (finishedStatuses.includes(status)) {
-      setRun(true);
-    }
+
   };
 
   return (
     <>
       <PageBreadcrumb title="Tour Page" name="Tour Page" breadCrumbItems={["Konrix", "Extended", "Tour Page"]} />
-      <Joyride
-        callback={handleJoyrideCallback}
-        continuous={true}
-        run={run}
-        scrollToFirstStep={true}
-        showSkipButton={true}
-        steps={steps}
-      />
+
       <div className="card">
         <div className="card-header">
           <div className="flex justify-between items-center">

@@ -120,7 +120,7 @@ const CloningList = () => {
               <ListMovable key={idx} item={Number(item)} />
             ))}
           </ReactSortable>
-          <ReactSortable
+          {/* <ReactSortable
             group={{
               name: "grouping",
               pull: "clone",
@@ -136,7 +136,7 @@ const CloningList = () => {
               <ListMovable key={idx} item={Number(item)} />
             ))}
 
-          </ReactSortable>
+          </ReactSortable> */}
 
         </div>
       </div>
