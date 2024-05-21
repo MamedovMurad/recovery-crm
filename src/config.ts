@@ -1,5 +1,5 @@
 const config = {
-  API_URL: "http://recovery-crm.honeybal.net/api",
+  API_URL: "https://recovery-crm.honeybal.net/api",
 };
 
 export default config;
