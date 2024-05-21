@@ -14,6 +14,12 @@ const EditOrder: FunctionComponent<EditOderProps> = ({ id }) => {
     useEffect(() => {
         id && showOrder(id).then((data) => {
             setdetail(data)
+
+            if (data?.data.key_values.length>0) {
+                return setKeyVal(data?.data.key_values)
+            }
+     
+            
         })
     }, [id]);
 
@@ -42,11 +48,11 @@ const EditOrder: FunctionComponent<EditOderProps> = ({ id }) => {
         <div>
             <div className="flex gap-x-10">
                 <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50 p-2 rounded">Sifaris Novu</h4>
-                <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50  p-2 rounded">Nº Q00090 29.10.12</h4>
+                <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50  p-2 rounded">Nº{detail?.data?.id} { new Date(detail?.data?.created_at).toDateString()}</h4>
             </div>
             <div className="flex gap-x-10 mt-2">
                 <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50 p-2 rounded w-full">Muhendis</h4>
-                <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50  p-2 rounded w-full">Elnur Mammadli</h4>
+                <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50  p-2 rounded w-full">{detail.data?.engineer}</h4>
             </div>
 
             <div>
@@ -64,6 +70,7 @@ const EditOrder: FunctionComponent<EditOderProps> = ({ id }) => {
                     className="form-input"
                     labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                     required
+                    value={detail.data.engineer_note}
                 />
               {
                 keyVal.map(item=>(
