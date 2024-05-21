@@ -39,6 +39,7 @@ const BottomLink = () => {
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [loading, setloading]= useState(false)
   // const dispatch = useDispatch<AppDispatch>();
 
@@ -73,17 +74,21 @@ const Login = () => {
 loginAdmin(formData).then((data:any)=>{
   localStorage.setItem('agent',data?.data?.token)
   toast.success('You are logging in')
-if (localStorage.getItem('agent')) {
-  navigate('/dashboard')
-}
+
+
+
+}).then(()=>{
+window.location.replace(window.location.origin+'/')
+
 })
 
   };
 
-  const location = useLocation();
+
 
   // redirection back to where user got redirected from
   const redirectUrl = location?.search?.slice(6) || "/";
+
 
   return (
     <>

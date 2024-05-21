@@ -68,8 +68,8 @@ const EditOrder: FunctionComponent<EditOderProps> = ({ id }) => {
               {
                 keyVal.map(item=>(
                     <div className=" flex gap-x-3">
-                                    <input name="key[]" onChange={(e)=>editItem(item.id,'key',e.target.value)} value={item['key']} type="text" placeholder=" Mallarin ve xidmetlerin adi" />
-                                    <input name="val[]" value={item['value']} onChange={(e)=>editItem(item.id,'value',e.target.value)} type="text" placeholder=" Qiymet" />
+                                    <input className=" w-full" name="key[]" onChange={(e)=>editItem(item.id,'key',e.target.value)} value={item['key']} type="text" placeholder=" Mallarin ve xidmetlerin adi" />
+                                    <input className=" w-full" name="val[]" value={item['value']} onChange={(e)=>editItem(item.id,'value',e.target.value)} type="text" placeholder=" Qiymet" />
                                     <button type="button" onClick={()=>removeItem(item.id)} className=" bg-danger bg-opacity-50 text-white p-2 rounded px-5">sil</button>
                     </div>
                 )) }
