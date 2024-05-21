@@ -18,7 +18,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
     return (<div>
         <div className="flex gap-x-10">
             <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50 p-2 rounded">Sifaris Novu</h4>
-            <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50  p-2 rounded">Nº Q00090 29.10.12</h4>
+            <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50  p-2 rounded">Nº {detail?.data?.id} { new Date(detail?.data?.created_at).toDateString()}</h4>
         </div>
         <div className="grid grid-cols-2 gap-2 mb-2">
             <FormInput
@@ -30,7 +30,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 className="form-input bg-slate-500 bg-opacity-20"
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
-                value={detail?.data?.data?.order_type}
+                value={detail?.data?.order_type}
             />
         </div>
         <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50 p-2 rounded">Musteri Melumatlari</h4>
@@ -45,7 +45,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 className="form-input bg-slate-500 bg-opacity-20"
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
-                value={detail?.data?.data?.customer}
+                value={detail?.data?.customer}
             />
             <FormInput
                 label="S/V FIN"
@@ -56,7 +56,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 className="form-input bg-slate-500 bg-opacity-20"
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
-                value={'5kl7ju'}
+                value={detail?.data?.id_card}
             />
             <FormInput
                 label="Telefon"
@@ -67,6 +67,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 className="form-input bg-slate-500 bg-opacity-20"
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
+                value={detail?.data?.phone}
             />
             <FormInput
                 label="Unvan"
@@ -77,7 +78,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 className="form-input bg-slate-500 bg-opacity-20"
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
-                value={'Baku,Absheron'}
+                value={detail?.data?.address}
             />
         </div>
         <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50 p-2 rounded">Cihaz Melumatlari</h4>
@@ -92,7 +93,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 className="form-input bg-slate-500 bg-opacity-20"
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
-                value={detail?.data?.data?.device}
+                value={detail?.data?.device}
             />
             <FormInput
                 label="Cihaz Modeli"
@@ -103,7 +104,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 className="form-input bg-slate-500 bg-opacity-20"
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
-                value={detail?.data?.data?.device}
+                value={detail?.data?.device_model}
             />
             <FormInput
                 label="Seriya Nomresi"
@@ -114,7 +115,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 className="form-input bg-slate-500 bg-opacity-20"
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
-                value={detail?.data?.data?.device}
+                value={detail?.data?.device_serie}
             />
             <FormInput
                 label="Cihaz Gorunusu"
@@ -125,7 +126,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 className="form-input bg-slate-500 bg-opacity-20"
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
-                value={detail?.data?.data?.device}
+                value={detail?.data?.device_view}
             />
 
             <FormInput
@@ -137,7 +138,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 className="form-input bg-slate-500 bg-opacity-20"
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
-                value={detail?.data?.data?.note}
+                value={detail?.data?.device_note}
             />
         </div>
         <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50 p-2 rounded">operator Melumatlari</h4>
@@ -152,7 +153,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 className="form-input bg-slate-500 bg-opacity-20"
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
-                value={detail?.data?.data?.engineer}
+                value={detail?.data?.operator}
             />
             <FormInput
                 label="Muhendis"
@@ -163,9 +164,9 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 className="form-input bg-slate-500 bg-opacity-20"
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
-                value={detail?.data?.data?.engineer}
+                value={detail?.data?.engineer}
             />
-
+{/* 
             <FormInput
                 label="Texniki Muayine"
                 disabled
@@ -176,7 +177,7 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
                 labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
                 required
                 value={detail?.data?.data?.engineer}
-            />
+            /> */}
 
         </div>
 
