@@ -48,45 +48,49 @@ const EditOrder: FunctionComponent<EditOderProps> = ({ id }) => {
         <div>
             <div className="flex gap-x-10">
                 <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50 p-2 rounded">Sifaris Novu</h4>
-                <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50  p-2 rounded">Nº{detail?.data?.id} { new Date(detail?.data?.created_at).toDateString()}</h4>
-            </div>
+                <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50  p-2 rounded">Nº {detail?.data?.id} { new Date(detail?.data?.created_at).toDateString()}</h4>            </div>
             <div className="flex gap-x-10 mt-2">
                 <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50 p-2 rounded w-full">Muhendis</h4>
-                <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50  p-2 rounded w-full">{detail.data?.engineer}</h4>
+                <h4 className=" text-white font-semibold my-3 bg-primary bg-opacity-50  p-2 rounded w-full">{detail?.data?.engineer}</h4>
             </div>
 
             <div>
-            <VerticalForm<any>
-                onSubmit={onSubmit
-
-                }
-                // resolver={schemaResolver}
-                formClass=" flex flex-col gap-y-4 "
-            >
-                       <FormInput
-                    type="textarea"
-                    name="device_note"
-                    placeholder="Mezmun"
-                    className="form-input"
-                    labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
-                    required
-                    value={detail.data.engineer_note}
-                />
-              {
-                keyVal.map(item=>(
-                    <div className=" flex gap-x-3">
-                                    <input className=" w-full" name="key[]" onChange={(e)=>editItem(item.id,'key',e.target.value)} value={item['key']} type="text" placeholder=" Mallarin ve xidmetlerin adi" />
-                                    <input className=" w-full" name="val[]" value={item['value']} onChange={(e)=>editItem(item.id,'value',e.target.value)} type="text" placeholder=" Qiymet" />
-                                    <button type="button" onClick={()=>removeItem(item.id)} className=" bg-danger bg-opacity-50 text-white p-2 rounded px-5">sil</button>
+                {
+                    detail?.data&&
+                    <VerticalForm<any>
+                    onSubmit={onSubmit
+    
+                    }
+                    defaultValues={{device_note:detail?.data.engineer_note}}
+                    // resolver={schemaResolver}
+                    formClass=" flex flex-col gap-y-4 "
+                >
+                           <FormInput
+                        type="textarea"
+                        name="device_note"
+                        placeholder="Mezmun"
+                        className="form-input"
+                        labelClassName="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-2"
+                        required
+          
+                    />
+                  {
+                    keyVal.map(item=>(
+                        <div className=" flex gap-x-3">
+                                        <input className=" w-full" name="key[]" onChange={(e)=>editItem(item.id,'key',e.target.value)} value={item['key']} type="text" placeholder=" Mallarin ve xidmetlerin adi" />
+                                        <input className=" w-full" name="val[]" value={item['value']} onChange={(e)=>editItem(item.id,'value',e.target.value)} type="text" placeholder=" Qiymet" />
+                                        <button type="button" onClick={()=>removeItem(item.id)} className=" bg-danger bg-opacity-50 text-white p-2 rounded px-5">sil</button>
+                        </div>
+                    )) }
+    
+    <div>
+                        <button type="button" onClick={addItem} className=" bg-success bg-opacity-50 text-white p-2 w-20">Artir</button>
                     </div>
-                )) }
-
-<div>
-                    <button type="button" onClick={addItem} className=" bg-success bg-opacity-50 text-white p-2 w-20">Artir</button>
-                </div>
-
-                <button className=" p-2 bg-primary text-white">Elave et</button>
-            </VerticalForm>
+    
+                    <button className=" p-2 bg-primary text-white">Elave et</button>
+                </VerticalForm>
+                }
+      
             </div>
         </div>
     )
