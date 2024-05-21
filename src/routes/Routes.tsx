@@ -42,7 +42,7 @@ const AllRoutes = (props: RouteProps) => {
             <Route
               path={route.path}
               element={
-                api.isUserAuthenticated() === false ? (
+              !localStorage.getItem('agent')? (
                   <Navigate
                     to={{
                       pathname: "/auth/login",

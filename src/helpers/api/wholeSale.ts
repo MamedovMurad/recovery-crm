@@ -14,11 +14,24 @@ async function getHddModels() {
   );
   return res;
 }
+async function getPcbs() {
+  const res: { data: { data: { id: number; name: string }[] } } = await api.get(
+    "/pcb",
+    ""
+  );
+  return res;
+}
+
 
 async function createModel(param: { name: string }) {
   const res: { data: any } = await api.create("/hard-disk", param);
   return res;
 }
+async function createPcb(param: {id_number:string, hdd_name:string, pcb_number:string}) {
+  const res: { data: any } = await api.create("/pcb", param);
+  return res;
+}
+
 async function updateCamera(param: ICameraForm, id: number) {
   const res: { data: ICameraResponse } = await api.update(
     "/cameras/" + id,
@@ -29,6 +42,10 @@ async function updateCamera(param: ICameraForm, id: number) {
 
 async function removeModel(param: number) {
   const res = await api.delete("/hard-disk/" + param);
+  return res;
+}
+async function removePcb(param: number) {
+  const res = await api.delete("/pcb/" + param);
   return res;
 }
 
@@ -51,4 +68,7 @@ export {
   updateCamera,
   getHddModels,
   createHDDProduct,
+  getPcbs,
+  createPcb,
+  removePcb
 };

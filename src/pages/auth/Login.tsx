@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Navigate, Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Navigate, Link, useLocation,useNavigate} from "react-router-dom";
 
 // form validation
 import * as yup from "yup";
@@ -17,6 +17,8 @@ import {
   AuthLayout,
   PageBreadcrumb,
 } from "../../components";
+import { loginAdmin } from "../../helpers/api/auth";
+import { toast } from "react-toastify";
 
 interface UserData {
   email: string;
@@ -36,36 +38,44 @@ const BottomLink = () => {
 };
 
 const Login = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const [loading, setloading]= useState(false)
+  // const dispatch = useDispatch<AppDispatch>();
 
-  const { user, userLoggedIn, loading } = useSelector((state: RootState) => ({
-    user: state.Auth.user,
-    loading: state.Auth.loading,
-    error: state.Auth.error,
-    userLoggedIn: state.Auth.userLoggedIn,
-  }));
+  // const { user, userLoggedIn, loading } = useSelector((state: RootState) => ({
+  //   user: state.Auth.user,
+  //   loading: state.Auth.loading,
+  //   error: state.Auth.error,
+  //   userLoggedIn: state.Auth.userLoggedIn,
+  // }));
 
-  useEffect(() => {
-    dispatch(resetAuth());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(resetAuth());
+  // }, [dispatch]);
 
   /*
   form validation schema
   */
-  const schemaResolver = yupResolver(
-    yup.object().shape({
-      email: yup.string().required("Please enter Username"),
-      password: yup.string().required("Please enter Password"),
-    })
-  );
+  // const schemaResolver = yupResolver(
+  //   yup.object().shape({
+  //     email: yup.string().required("Please enter Username"),
+  //     password: yup.string().required("Please enter Password"),
+  //   })
+  // );
 
   /*
   handle form submissionnewTask
   */
-  const onSubmit = (formData: UserData) => {
-    console.log(formData["email"]);
+  const onSubmit = async(formData: UserData) => {
+  
+    
+    setloading(true)
+loginAdmin(formData).then((data:any)=>{
+  localStorage.setItem('agent',data?.data?.token)
+  toast.success('You are logging in')
+navigate('/')
+})
 
-    dispatch(loginUser(formData["email"], formData["password"]));
   };
 
   const location = useLocation();
@@ -75,15 +85,15 @@ const Login = () => {
 
   return (
     <>
-      {(userLoggedIn || user) && <Navigate to={redirectUrl} />}
+  
       <PageBreadcrumb title="Login" />
       <AuthLayout
         authTitle="Sign In"
         helpText="Enter your email address and password to access admin panel."
-        bottomLinks={<BottomLink />}
-        hasThirdPartyLogin
+   
+  
       >
-        <VerticalForm<UserData> onSubmit={onSubmit} resolver={schemaResolver}>
+        <VerticalForm<UserData> onSubmit={onSubmit} >
           <FormInput
             label="Email Address"
             type="text"
@@ -106,28 +116,12 @@ const Login = () => {
             required
           />
 
-          <div className="flex items-center justify-between mb-4">
-            <FormInput
-              label="Remember me"
-              type="checkbox"
-              name="checkbox"
-              containerClass="flex items-center"
-              labelClassName="ms-2"
-              className="form-checkbox rounded"
-            />
-            <Link
-              to="/auth/recover-password"
-              className="text-sm text-primary border-b border-dashed border-primary"
-            >
-              Forget Password ?
-            </Link>
-          </div>
 
           <div className="flex justify-center mb-6">
             <button
               className="btn w-full text-white bg-primary"
               type="submit"
-              disabled={loading}
+              
             >
               Log In
             </button>

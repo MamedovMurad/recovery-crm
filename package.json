@@ -30,6 +30,7 @@
     "apexcharts": "3.35.4",
     "axios": "0.21.1",
     "axios-mock-adapter": "1.19.0",
+    "clsx": "^2.1.1",
     "feather-icons-react": "^0.6.2",
     "gridjs": "^5.1.0",
     "gridjs-react": "5.1.0",

@@ -198,16 +198,18 @@ export const HoverableRows = (props: HoverableRowsProps) => {
                             {record[item]}
                           </td>
                         ))}
+                        {
+                          props.delete && <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                            <Link
+                              className="bg-danger hover:bg-danger p-1 rounded "
+                              to="#"
+                              onClick={() => props?.delete?.(record.id)}
+                            >
+                              <span className="mgc_delete_fill text-white"></span>
+                            </Link>
+                          </td>
+                        }
 
-                        <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                          <Link
-                            className="bg-danger hover:bg-danger p-1 rounded "
-                            to="#"
-                            onClick={() => props?.delete?.(record.id)}
-                          >
-                            <span className="mgc_delete_fill text-white"></span>
-                          </Link>
-                        </td>
                       </tr>
                     );
                   })}
@@ -345,33 +347,30 @@ const HighlightedTables = () => {
                     return (
                       <tr key={idx}>
                         <td
-                          className={`${
-                            record.name === "John Brown"
+                          className={`${record.name === "John Brown"
                               ? "bg-primary/25"
                               : record.name === "Joe Black"
-                              ? "bg-red-100"
-                              : ""
-                          }  px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800`}
+                                ? "bg-red-100"
+                                : ""
+                            }  px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800`}
                         >
                           {record.name}
                         </td>
                         <td
-                          className={`${
-                            record.age === 27
+                          className={`${record.age === 27
                               ? "bg-orange-100"
                               : record.age === 31
-                              ? "bg-primary/25"
-                              : ""
-                          } px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200`}
+                                ? "bg-primary/25"
+                                : ""
+                            } px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200`}
                         >
                           {record.age}
                         </td>
                         <td
-                          className={`${
-                            record.address === "Sidney No. 1 Lake Park"
+                          className={`${record.address === "Sidney No. 1 Lake Park"
                               ? "bg-primary/25"
                               : ""
-                          } px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200`}
+                            } px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200`}
                         >
                           {record.address}
                         </td>

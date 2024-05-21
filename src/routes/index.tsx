@@ -7,6 +7,13 @@ import PrivateRoute from "./PrivateRoute";
 import TicketsApp from "../pages/apps/Tickets";
 import ModelsPage from "../pages/wholeSale/ModelsPage";
 import AddWholeSale from "../pages/wholeSale/_components/add-whole-sale";
+import PcbPage from "../pages/wholeSale/PcbPage";
+import RolesPage from "../pages/roles";
+import UsersPage from "../pages/users";
+import OrderPage from "../pages/orders";
+import AddOrderPage from "../pages/orders/_components/addOrder";
+import EditOrder from "../pages/orders/_components/editOrder";
+import ViewEditOrder from "../pages/orders/view-edit";
 
 // lazy load all the views
 
@@ -190,12 +197,31 @@ const kanbanAppRoutes: RoutesProps = {
 };
 
 const projectAppRoutes: RoutesProps = {
+
   path: "/wholesale",
   name: "Project",
   route: PrivateRoute,
   roles: ["Admin"],
   icon: "project",
   children: [
+    {
+      path: "/orders/list",
+      name: "OrderList",
+      element: <OrderPage />,
+      route: PrivateRoute,
+    },
+    {
+      path: '/orders/create',
+      name: 'OrderCreate',
+      route: PrivateRoute,
+      element: <AddOrderPage />
+    },
+    {
+      path: '/orders/edit/:id',
+      name: 'OrderUpdate',
+      route: PrivateRoute,
+      element: <ViewEditOrder />
+    },
     {
       path: "/wholesale/hdd/list",
       name: "ProjectList",
@@ -215,9 +241,27 @@ const projectAppRoutes: RoutesProps = {
       route: PrivateRoute,
     },
     {
+      path: "/wholesale/hdd/pcbs",
+      name: "Pcbs",
+      element: <PcbPage />,
+      route: PrivateRoute,
+    },
+    {
+      path: "/users",
+      name: "Users",
+      element: <UsersPage />,
+      route: PrivateRoute,
+    },
+    {
       path: "/apps/project/create",
       name: "ProjectCreate",
       element: <ProjectCreate />,
+      route: PrivateRoute,
+    },
+    {
+      path: "/roles",
+      name: "Roles",
+      element: <RolesPage />,
       route: PrivateRoute,
     },
   ],

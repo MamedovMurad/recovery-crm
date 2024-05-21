@@ -16,19 +16,21 @@ async function getMe() {
   return res;
 }
 
-async function getUserList() {
-  const baseUrl = "/users";
-  const res: { data: IUserResponse } = await api.get(`${baseUrl}`, "");
+async function getUserList(role?:string) {
+  const baseUrl = "/user";
+  const res: { data: IUserResponse } = await api.get(`${baseUrl}`, role?{role}:"");
   return res;
 }
 
 async function createUser(param: any) {
-  const res: { data: IUserResponse } = await api.create("/users", param);
+  const res: { data: IUserResponse } = await api.create("/user", param);
   return res;
 }
 
 async function deleteUser(id: number | string) {
-  api.delete("/users/" + id);
+  console.log(id);
+  
+  api.delete("/user/" + id);
 }
 
 export { login as apiLogin, getMe, getUserList, createUser, deleteUser };

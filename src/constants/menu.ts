@@ -15,12 +15,32 @@ const MENU_ITEMS: MenuItemTypes[] = [
     label: "Menu",
     isTitle: true,
   },
+
   {
     key: "dashboard",
     label: "Əsas səhifə",
     isTitle: false,
     icon: "mgc_home_3_line",
     url: "/dashboard",
+  },
+  {
+    key: "orders",
+    label: "Sifarisler",
+    isTitle: false,
+    icon: "mgc_bill_line",
+    url: "/orders/list",
+  },
+  {
+    key: 'Roles',
+    label: "Rollar",
+    isTitle: false,
+    url: "/roles"
+  },
+  {
+    key: 'users',
+    label: "Istifadeciler",
+    isTitle: false,
+    url: "/users"
   },
   {
     key: "wholesale",
@@ -39,6 +59,12 @@ const MENU_ITEMS: MenuItemTypes[] = [
         url: "/wholesale/hdd/models",
         parentKey: "wholesale",
       },
+      {
+        key: "pcb",
+        label: 'PCB',
+        url: "/wholesale/hdd/pcbs",
+        parentKey: 'wholesale'
+      }
     ],
   },
   /*   {

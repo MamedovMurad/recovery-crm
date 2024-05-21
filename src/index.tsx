@@ -7,7 +7,7 @@ import App from "./App.js";
 import { store } from "./redux/store.js";
 import ToastContainer from "rsuite/esm/toaster/ToastContainer.js";
 /* import { ToastContainer, toast } from "react-toastify"; */
-/* import 'react-toastify/dist/ReactToastify.css'; */
+ import 'react-toastify/dist/ReactToastify.css'; 
 
 const container = document.getElementById("konrix");
 if (container) {
@@ -17,7 +17,7 @@ if (container) {
       <React.Fragment>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <App />
-          <ToastContainer />
+        
         </BrowserRouter>
       </React.Fragment>
     </Provider>

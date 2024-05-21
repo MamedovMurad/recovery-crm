@@ -11,12 +11,13 @@ import { APICore } from "../helpers/api/apiCore";
 
 const PrivateRoute = ({ component: Component, roles, ...rest }: any) => {
   const api = new APICore();
+console.log(localStorage.getItem('agent'));
 
   return (
     <Route
       {...rest}
       render={(props: RouteProps) => {
-        if (api.isUserAuthenticated() === false) {
+        if (localStorage.getItem('agent')==null) {
           // not logged in so redirect to login page with the return url
           return (
             <Navigate

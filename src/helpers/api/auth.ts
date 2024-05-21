@@ -3,10 +3,18 @@ import { APICore } from "./apiCore";
 const api = new APICore();
 
 // account
-function login(params: { username: string; password: string }) {
-  const baseUrl = "/auth/login";
+function login(params: { email: string; password: string }) {
+  const baseUrl = "/login";
   return api.create(`${baseUrl}`, {
-    email: params.username,
+    email: params.email,
+    password: params.password,
+  });
+}
+
+function loginAdmin(params: { email: string; password: string }) {
+  const baseUrl = "/login";
+  return api.create(`${baseUrl}`, {
+    email: params.email,
     password: params.password,
   });
 }
@@ -30,4 +38,4 @@ async function getMe() {
   const res: { data: any } = await api.get("/users/me?full=true", "");
   return res;
 }
-export { login, logout, signup, forgotPassword, getMe };
+export { login, logout, signup, forgotPassword, getMe , loginAdmin};

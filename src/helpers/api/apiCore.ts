@@ -12,7 +12,7 @@ const getUserFromCookie = () => {
 };
 // content type
 axios.defaults.headers.post["Content-Type"] = "application/json";
-axios.defaults.headers["Authorization"] = getUserFromCookie();
+axios.defaults.headers["Authorization"] = localStorage.getItem('agent');
 axios.defaults.baseURL = config.API_URL;
 
 console.log(config.API_URL);
@@ -230,10 +230,12 @@ class APICore {
 /*
 Check if token available in session
 */
-const user = getUserFromCookie();
-if (user) {
-  const { token } = user;
+const token = localStorage.getItem('agent');
+if (token) {
+
   if (token) {
+    console.log('token');
+    
     setAuthorization(token);
   }
 }
