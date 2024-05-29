@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { wholeSaleHook } from "./customHook";
 import { APICore } from "../../helpers/api/apiCore";
 import { Link } from "react-router-dom";
+import ManualAddWholeSalee from "./_components/manual-add-whole-sale";
 
 interface Props {}
 
@@ -19,13 +20,22 @@ const schemaResolver = yupResolver(
   })
 );
 const WholeSale: React.FC<Props> = ({}) => {
+  const[isOpen, setisOpen]=useState(false)
   const api = new APICore();
-  const { list } = wholeSaleHook();
+  const { list, addHddProductManual } = wholeSaleHook();
   console.log(list, "list");
 
   return (
     <div>
       <div className=" flex justify-end items-center">
+      <Link
+      onClick={()=>setisOpen(true)}
+          to={"#"}
+          className="btn border-primary text-primary mb-3  hover:bg-primary hover:text-white mr-7"
+        >
+          <span className="mgc_add_fill"></span>
+          Yeni Hdd yarat
+        </Link>
         <Link
           to={"/wholesale/hdd/create"}
           className="btn border-primary text-primary mb-3  hover:bg-primary hover:text-white"
@@ -39,11 +49,13 @@ const WholeSale: React.FC<Props> = ({}) => {
         names={["id", "hdd_name", "size", "fw", "model", "family", "heads"]}
       />
 
-      {/*       <ModalLayout
+            <ModalLayout
         showModal={isOpen}
-        children={<AddWholeSale />}
+        children={<ManualAddWholeSalee  CB={addHddProductManual} />}
+       
         toggleModal={() => setisOpen(!isOpen)}
-      /> */}
+        
+      />
     </div>
   );
 };

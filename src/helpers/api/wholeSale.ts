@@ -53,6 +53,10 @@ async function createHDDProduct(params: any) {
   const res: { data: any } = await api.create("/excel-import", params);
   return res;
 }
+async function createHddProductManual(params:any){
+  const res: { data: any } = await api.create("/hdd-product", params);
+  return res;
+}
 async function takePhoto(id: number | string) {
   const res: { data: ICameraResponse } = await api.create(
     "/cameras/" + id + "/photo",
@@ -70,5 +74,6 @@ export {
   createHDDProduct,
   getPcbs,
   createPcb,
-  removePcb
+  removePcb,
+  createHddProductManual
 };

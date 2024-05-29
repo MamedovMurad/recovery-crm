@@ -181,7 +181,10 @@ const ViewOrder: FunctionComponent<ViewOrderProps> = ({ id }) => {
 
         </div>
 
-        <div className="flex justify-end ">
+        <div className="flex justify-between items-center px-20 mt-8  ">
+        <a href={detail?.data?.data_recovery_pdf} target="_blank" className="bg-primary flex gap-x-1 items-center text-white font-semibold px-4 py-1 rounded">
+                <i className="mgc_print_line"></i> Invois Çap et
+            </a>
             <a href={detail?.data?.pdf} target="_blank" className="bg-primary flex gap-x-1 items-center text-white font-semibold px-4 py-1 rounded">
                 <i className="mgc_print_line"></i> Çap et
             </a>

@@ -8,6 +8,7 @@ interface ModalLayoutProps {
   children: ReactNode;
   placement?: string;
   isStatic?: boolean;
+
 }
 
 const ModalLayout = ({ showModal, toggleModal, panelClassName, children, placement, isStatic }: ModalLayoutProps) => {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  createHddProductManual,
   createPcb,
   getHddList,
   getHddModels,
@@ -72,6 +73,13 @@ async function addPcb(params:{id_number:string, hdd_name:string, pcb_number:stri
   })
 }
 
+function addHddProductManual(param: any) {
+  createHddProductManual(param).then((data)=>{
+      toast.success('Uqurla elave edildi');
+      getList()
+  })
+ 
+}
 
   useEffect(() => {
     getList();
@@ -88,6 +96,7 @@ async function addPcb(params:{id_number:string, hdd_name:string, pcb_number:stri
     pcbs,
     getPcbList,
     addPcb,
-    deletePcb
+    deletePcb,
+    addHddProductManual
   };
 };
