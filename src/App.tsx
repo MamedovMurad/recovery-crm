@@ -25,7 +25,7 @@ if (localStorage.getItem('agent')) {
     dispatch( authApiResponseSuccess(AuthActionTypes.LOGIN_USER, data?.data))
    })
 }
-}, [localStorage.getItem('agent')]);
+}, []);
 
 
 
