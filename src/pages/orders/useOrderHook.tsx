@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getRoles } from "../../helpers/api/role"
-import { createOrder, getOrders } from "../../helpers/api/order"
+import { createOrder, getOrders, removeOrder } from "../../helpers/api/order"
 import { toast } from "react-toastify"
 import {  useNavigate } from "react-router-dom"
 
@@ -31,10 +31,17 @@ function addOrder (param:any){
         
     }).finally(()=>setloading(false))
 }
+function deleteorder(id:string|number){
+    removeOrder(id).then((data)=>{
+        toast.success('uqurla silindi!')
+        getListRole()
+    })
+}
 return{
     list,
     loading,
-    addOrder
+    addOrder,
+    deleteorder
 }
 }
 

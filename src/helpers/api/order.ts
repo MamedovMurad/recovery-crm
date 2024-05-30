@@ -28,11 +28,18 @@ async function getOrders() {
     const res: { data: any } = await api.create("/key-value", param);
     return res;
   }
+  async function removeOrder(id:number|string){
+    const res = await api.delete(
+      "/order/" + id
+    );
+    return res;
+  }
   export {
     getOrders,
     createOrder,
     getComments,
     createComment,
     showOrder,
-    setOrderKey
+    setOrderKey,
+    removeOrder
   }

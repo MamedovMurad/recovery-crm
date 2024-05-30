@@ -3,9 +3,10 @@ import { useOrderHook } from "./useOrderHook";
 import { ORDER_STATUS } from "../../helpers/data";
 import clsx from 'clsx';
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const ManageTickets = (params:{list:any}) => {
-
+const ManageTickets = (params:{list:any, delete:(id:string|number)=>void }) => {
+  const role = useSelector((state:any)=>state.Auth.user?.role)
   function ticketColor(params:number) {
    return `inline-flex items-center gap-1.5 py-1 px-3 rounded text-xs  font-medium bg-${ORDER_STATUS[params].color}-100`
   }
@@ -74,7 +75,7 @@ const ManageTickets = (params:{list:any}) => {
  
                       <td className="whitespace-nowrap py-4 px-3 text-center text-sm font-medium">
                         <Link to={'/orders/edit/'+ticket.id} className="me-0.5"> <i className="mgc_eye_line text-lg"></i> </Link>&nbsp;
-                        <button className="ms-0.5"> <i className="mgc_delete_line text-xl"></i> </button>
+                        <button disabled={role!=="Super Admin"} className="ms-0.5" onClick={()=>params.delete(ticket.id)}> <i className="mgc_delete_line text-xl"></i> </button>
                       </td>
                     </tr>
                   )
@@ -94,7 +95,7 @@ const ManageTickets = (params:{list:any}) => {
    
 
   const OrderPage: FunctionComponent<OrderPageProps> = () => {
-    const {list}=useOrderHook()
+    const {list, deleteorder}=useOrderHook()
    
     const TicketStatistic = () => {
       return (
@@ -122,7 +123,7 @@ const ManageTickets = (params:{list:any}) => {
     
     return ( <div>
 <TicketStatistic/>
-        <ManageTickets list={list}/>
+        <ManageTickets list={list} delete={deleteorder}/>
     </div> );
   }
    
