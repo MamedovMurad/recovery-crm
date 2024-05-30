@@ -51,9 +51,9 @@ const [isopen, setisopen]=useState(false)
          
         </div>
         <HoverableRows
-          columns={["id", "Id Number", 'Pcb Number',"Hdd Name"]}
+          columns={[ "Id Number", 'Pcb Number',"Hdd Name"]}
           list={pcbs}
-          names={["id", "id_number", "pcb_number","hdd_name"]}
+          names={[ "id_number", "pcb_number","hdd_name"]}
           delete={deletePcb}
         />
       </>

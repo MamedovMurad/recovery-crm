@@ -61,9 +61,9 @@ const ModelsPage: React.FC<Props> = ({}) => {
           </VerticalForm>
         </div>
         <HoverableRows
-          columns={["id", "Model"]}
+          columns={[ "Model"]}
           list={modelList?.map((item) => ({ id: item.id, name: item.name }))}
-          names={["id", "name"]}
+          names={[ "name"]}
           delete={deleteModel}
         />
       </>
