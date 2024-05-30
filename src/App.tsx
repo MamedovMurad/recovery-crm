@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import AllRoutes from "./routes/Routes";
 
@@ -9,13 +9,24 @@ import "nouislider/distribute/nouislider.css";
 import "./assets/scss/app.scss";
 import "./assets/scss/icons.scss";
 import { ToastContainer } from "react-toastify";
-
+import { getMe } from "./helpers/api/user";
+import { useDispatch } from "react-redux";
+import { AuthActionTypes } from "./redux/auth/constants";
+import {useSelector} from "react-redux";
+import { authApiResponseSuccess } from "./redux/actions";
 // configure fake backend
 /* configureFakeBackend(); */
 
 const App = () => {
- console.log( localStorage.getItem('agent'),'lll');
- 
+  const dispatch = useDispatch()
+useEffect(() => {
+  getMe().then((data)=>{
+   dispatch( authApiResponseSuccess(AuthActionTypes.LOGIN_USER, data?.data))
+  })
+}, []);
+
+
+
   return (
     <>
       <React.Fragment>

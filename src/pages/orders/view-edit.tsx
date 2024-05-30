@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { useParams } from 'react-router-dom';
 import ViewOrder from "./_components/viewOrder";
 import Comments from "./_components/comments";
+import { useSelector } from "react-redux";
 interface ViewOrderProps {
 
 }
@@ -13,7 +14,7 @@ const ViewEditOrder: FunctionComponent<ViewOrderProps> = () => {
     const [isView, setIsview] = useState(true)
     const { id } = useParams()
     const [isOpen, setIsOpen] = useState(false)
-
+    const role = useSelector((state:any)=>state.Auth.user?.role)
     return (<div>
 
         <div className="h-full">
@@ -28,7 +29,7 @@ const ViewEditOrder: FunctionComponent<ViewOrderProps> = () => {
             <button onClick={() => setIsview(true)} className={clsx(" rounded py-1 px-3", isView ? "bg-primary bg-opacity-70 text-white " : "border border-primary  text-primary ")}>
                 sifaris haqqinda melumat
             </button>
-            <button onClick={() => setIsview(false)} className={clsx(" rounded py-1 px-3", isView ? "border border-primary  text-primary " : "bg-primary bg-opacity-70 text-white")}>
+            <button disabled={role==="Operator"} onClick={() => setIsview(false)} className={clsx(" rounded py-1 px-3", isView ? "border border-primary  text-primary " : "bg-primary bg-opacity-70 text-white")}>
                 isler ve materiallar
             </button>
         </div>

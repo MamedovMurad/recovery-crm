@@ -11,7 +11,7 @@ async function login(params: { email: string; password: string }) {
 }
 
 async function getMe() {
-  const baseUrl = "/users/me?full=true";
+  const baseUrl = "/get-me";
   const res = await api.get(`${baseUrl}`, "");
   return res;
 }

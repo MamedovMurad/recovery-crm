@@ -42,8 +42,12 @@ interface State {
 }
 
 const Auth = (state: State = INIT_STATE, action: any): any => {
+
   switch (action.type) {
+    
     case AuthActionTypes.API_RESPONSE_SUCCESS:
+  
+      
       switch (action.payload.actionType) {
         case AuthActionTypes.LOGIN_USER: {
           return {

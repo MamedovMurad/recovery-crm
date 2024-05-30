@@ -44,9 +44,9 @@ const WholeSale: React.FC<Props> = ({}) => {
         </Link>
       </div>
       <HoverableRows
-        columns={["Id", "HDD Name", "Size", "FW", "Model", "Family", "Heads"]}
+        columns={[ "HDD Name", "Size", "FW", "Model", "Family", "Heads"]}
         list={list?.map((item: any) => ({ ...item }))}
-        names={["id", "hdd_name", "size", "fw", "model", "family", "heads"]}
+        names={[ "hdd_name", "size", "fw", "model", "family", "heads"]}
       />
 
             <ModalLayout

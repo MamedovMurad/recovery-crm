@@ -1,8 +1,17 @@
+import { useSelector } from "react-redux";
 import { MENU_ITEMS, MenuItemTypes } from "../constants/menu";
+
 
 const getMenuItems = () => {
   // NOTE - You can fetch from server and return here as well
+const role = useSelector((state:any)=>state.Auth.user?.role)
+
+
+if (role==="Super Admin") {
   return MENU_ITEMS;
+}
+return MENU_ITEMS?.filter((item)=>item.key!=="wholesale")
+
 }
 
 const findAllParent = (

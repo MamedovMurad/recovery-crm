@@ -17,6 +17,7 @@ import { authApiResponseSuccess, authApiResponseError } from "./actions";
 
 // constants
 import { AuthActionTypes } from "./constants";
+import { getMe } from "../../helpers/api/user";
 
 interface UserData {
   payload: {
@@ -36,11 +37,11 @@ const api = new APICore();
  */
 
 function* login({
-  payload: { email, password },
-  type,
+
+ 
 }: UserData): SagaIterator {
   try {
-    const response = yield call(loginApi, { email, password });
+    const response = yield call(getMe);
     const user = response.data.data;
     console.log(user);
 

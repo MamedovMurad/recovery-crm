@@ -28,10 +28,14 @@ interface UserData {
 export const authApiResponseSuccess = (
   actionType: string,
   data: UserData | {}
-): AuthActionType => ({
-  type: AuthActionTypes.API_RESPONSE_SUCCESS,
-  payload: { actionType, data },
-});
+): AuthActionType => {
+  console.log(actionType,'test1');
+  
+  return ({
+    type: AuthActionTypes.API_RESPONSE_SUCCESS,
+    payload: { actionType, data },
+  });
+}
 // common error
 export const authApiResponseError = (
   actionType: string,
