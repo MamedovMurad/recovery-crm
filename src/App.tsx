@@ -20,10 +20,12 @@ import { authApiResponseSuccess } from "./redux/actions";
 const App = () => {
   const dispatch = useDispatch()
 useEffect(() => {
+if (localStorage.getItem('agent')) {
   getMe().then((data)=>{
-   dispatch( authApiResponseSuccess(AuthActionTypes.LOGIN_USER, data?.data))
-  })
-}, []);
+    dispatch( authApiResponseSuccess(AuthActionTypes.LOGIN_USER, data?.data))
+   })
+}
+}, [localStorage.getItem('agent')]);
 
 
 
