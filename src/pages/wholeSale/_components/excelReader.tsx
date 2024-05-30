@@ -1,6 +1,7 @@
 import React from "react";
 import readXlsxFile from "read-excel-file";
 import { createHDDProduct } from "../../../helpers/api/wholeSale";
+import { toast } from "react-toastify";
 interface Props {}
 
 const ExcelReaderField: React.FC<Props> = ({}) => {
@@ -26,10 +27,12 @@ const ExcelReaderField: React.FC<Props> = ({}) => {
 
       createHDDProduct(
         res
-          .filter((item, index) => index > 0)
+          .filter((item, index) => index > 1)
           .map((item) => (item.ID_Num ? item : { ...item, ID_Num: "0" }))
       ).then((data) => {
-        console.log(data);
+       toast.success('Mulamatlar uqurla elave edildi')
+      }).catch(()=>{
+        toast.error("Xeta bash verdi!!!")
       });
     });
   }
