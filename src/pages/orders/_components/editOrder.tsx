@@ -3,6 +3,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import Comments from "./comments";
 import { setOrderKey, showOrder } from "../../../helpers/api/order";
 import { FormInput, VerticalForm } from "../../../components";
+import { toast } from "react-toastify";
 
 interface EditOderProps {
     id?: number | string
@@ -24,7 +25,11 @@ const EditOrder: FunctionComponent<EditOderProps> = ({ id }) => {
     }, [id]);
 
     function onSubmit(param:any){
-        setOrderKey({order_id:id,engineer_note:param.device_note,key_values:keyVal })
+        setOrderKey({order_id:id,engineer_note:param.device_note,key_values:keyVal }).then(()=>{
+            toast.success('uqurla elave edildi')
+            
+        })
+        
 
     }
     function addItem(){
