@@ -34,18 +34,21 @@ const MENU_ITEMS: MenuItemTypes[] = [
     key: 'Roles',
     label: "Rollar",
     isTitle: false,
-    url: "/roles"
+    url: "/roles",
+    icon:"mgc_moment_fill"
   },
   {
     key: 'users',
     label: "Istifadeciler",
     isTitle: false,
-    url: "/users"
+    url: "/users",
+    icon:'mgc_group_line'
   },
   {
     key: "wholesale",
     label: "Anbar",
     isTitle: false,
+    icon:'gc_home_3_line',
     children: [
       {
         key: "hdd-list",

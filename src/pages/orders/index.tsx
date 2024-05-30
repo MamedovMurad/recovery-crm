@@ -96,8 +96,32 @@ const ManageTickets = (params:{list:any}) => {
   const OrderPage: FunctionComponent<OrderPageProps> = () => {
     const {list}=useOrderHook()
    
+    const TicketStatistic = () => {
+      return (
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6">
+          {([{name:ORDER_STATUS['1'].name, icon:'mgc_tag_line', variant:'bg-primary/25 text-primary'},] || []).map((ticket, idx) => {
+            return (
+              <div className="card" key={idx}>
+                <div className="p-5">
+                  <div className="flex justify-between">
+                    <div className={`w-20 h-20 rounded-full inline-flex items-center justify-center ${ticket.variant}`}>
+                      <i className={`${ticket.icon} text-4xl`}></i>
+                    </div>
+                    <div className="text-right">
+                      <h3 className="text-gray-700 mt-1 text-2xl font-bold mb-5 dark:text-gray-300">400</h3>
+                      <p className="text-gray-500 mb-1 truncate dark:text-gray-400">{ticket.name} Tickets</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )
+    }
     
     return ( <div>
+<TicketStatistic/>
         <ManageTickets list={list}/>
     </div> );
   }
