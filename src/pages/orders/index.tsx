@@ -13,13 +13,9 @@ const ManageTickets = (params: { list: any, delete: (id: string | number) => voi
   return (
     <div className="mt-6">
       <div className="card">
-        <div className="flex flex-wrap justify-between items-center gap-2 p-6 bg-blue-100 ">
+        <div className="flex flex-wrap justify-between items-center gap-2 p-6 ">
           <Link to={'/orders/create'} className="btn bg-danger/20 text-sm font-medium text-danger hover:text-white hover:bg-danger"><i className="mgc_add_circle_line me-3"></i> Yeni Sifaris Elave Et</Link>
-          <div className="flex flex-wrap gap-2">
-            <button type="button" className="btn bg-success/25 text-lg font-medium text-success hover:text-white hover:bg-success"><i className="mgc_settings_3_line"></i></button>
-            <button type="button" className="btn bg-dark/25 text-sm font-medium text-slate-900 dark:text-slate-200/70 hover:text-white hover:bg-dark/90">Import</button>
-            <button type="button" className="btn bg-dark/25 text-sm font-medium text-slate-900 dark:text-slate-200/70 hover:text-white hover:bg-dark/90">Export</button>
-          </div>
+   
         </div>
         <div className="relative overflow-x-auto">
           <table className="w-full divide-y divide-gray-300 dark:divide-gray-700">

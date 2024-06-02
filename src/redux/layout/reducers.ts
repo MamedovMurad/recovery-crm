@@ -22,7 +22,10 @@ const INIT_STATE = () => {
   const urlSearchParams = new URLSearchParams(window.location.search);
   const params = Object.fromEntries(urlSearchParams.entries());
   return {
-    layoutTheme: (params['layout_theme'] === 'dark') ? LayoutTheme.THEME_DARK : LayoutTheme.THEME_LIGHT,
+    layoutTheme: 
+    // (params['layout_theme'] === 'dark') ? 
+    LayoutTheme.THEME_DARK ,
+    // : LayoutTheme.THEME_LIGHT,
     layoutDirection: LayoutDirection.LEFT_TO_RIGHT,
     layoutWidth: LayoutWidth.LAYOUT_WIDTH_FLUID,
     topBarTheme: TopBarTheme.TOPBAR_LIGHT,
