@@ -22,7 +22,7 @@ const schemaResolver = yupResolver(
 const WholeSale: React.FC<Props> = ({}) => {
   const[isOpen, setisOpen]=useState(false)
   const api = new APICore();
-  const { list, addHddProductManual,deleteHdd } = wholeSaleHook();
+  const { list, addHddProductManual,deleteHdd, modelList } = wholeSaleHook();
   console.log(list, "list");
 
   return (
@@ -43,10 +43,15 @@ const WholeSale: React.FC<Props> = ({}) => {
           <span className="mgc_add_fill"></span>
         </Link>
       </div>
+      <div className="flex items-center gap-2 flex-wrap my-3 ">
+         {modelList?.map((item)=>(
+          <div className="p-2 bg-blue-400 text-white font-semibold rounded cursor-pointer hover:bg-blue-500 transition-colors ">{item.name} (140 ədəd)</div>
+         ))}
+      </div>
       <HoverableRows
-        columns={[ "HDD Name", "Size", "FW", "Model", "Family", "Heads", ]}
+        columns={[ "HDD Name", "Size", "FW", "Model","HDD-Number", "Family", "Heads", ]}
         list={list?.map((item: any) => ({ ...item }))}
-        names={[ "hdd_name", "size", "fw", "model", "family", "heads"]}
+        names={[ "hdd_name", "size", "fw", "model", "Number", "family", "heads"]}
         delete={deleteHdd}
       />
 
