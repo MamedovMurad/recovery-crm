@@ -10,13 +10,13 @@ const roles = [
 ];
 
 const ORDER_STATUS = {
-  '1': { name: 'Yeni müştər', color: 'blue' },
-  '2': { name: 'Texniki müayinə', color: 'gray' },
-  '3': { name: 'Razılaşmada', color: "green" },
-  '4': { name: 'İmtina edildi ', color: 'red' },
-  '5': { name: 'Prosesdə ', color: 'orange' },
-  '6': { name: 'Hazır ', color: '#7EAC99' },
-  '7': { name: 'Təhvil verildi', color: "#555" },
+  '1': { name: 'Yeni müştəri', color: '#0895d8' },
+  '2': { name: 'Texniki müayinə', color: '#f7ff03' },
+  '3': { name: 'Razılaşmada', color: " #e2a907" },
+  '4': { name: 'İmtina edildi ', color: '#e63535' },
+  '5': { name: 'Prosesdə ', color: ' #1cb454' },
+  '6': { name: 'Hazır ', color: ' #03fc07' },
+  '7': { name: 'Təhvil verildi', color: "#68625d" },
 } as any
 
 

@@ -48,6 +48,10 @@ async function removePcb(param: number) {
   const res = await api.delete("/pcb/" + param);
   return res;
 }
+async function removeHDD(param: number) {
+  const res = await api.delete("/hdd-product/" + param);
+  return res;
+}
 
 async function createHDDProduct(params: any) {
   const res: { data: any } = await api.create("/excel-import", params);
@@ -75,5 +79,6 @@ export {
   getPcbs,
   createPcb,
   removePcb,
-  createHddProductManual
+  createHddProductManual,
+  removeHDD
 };

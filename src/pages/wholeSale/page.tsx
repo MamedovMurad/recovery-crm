@@ -22,7 +22,7 @@ const schemaResolver = yupResolver(
 const WholeSale: React.FC<Props> = ({}) => {
   const[isOpen, setisOpen]=useState(false)
   const api = new APICore();
-  const { list, addHddProductManual } = wholeSaleHook();
+  const { list, addHddProductManual,deleteHdd } = wholeSaleHook();
   console.log(list, "list");
 
   return (
@@ -44,9 +44,10 @@ const WholeSale: React.FC<Props> = ({}) => {
         </Link>
       </div>
       <HoverableRows
-        columns={[ "HDD Name", "Size", "FW", "Model", "Family", "Heads"]}
+        columns={[ "HDD Name", "Size", "FW", "Model", "Family", "Heads", ]}
         list={list?.map((item: any) => ({ ...item }))}
         names={[ "hdd_name", "size", "fw", "model", "family", "heads"]}
+        delete={deleteHdd}
       />
 
             <ModalLayout

@@ -5,6 +5,7 @@ import {
   getHddList,
   getHddModels,
   getPcbs,
+  removeHDD,
   removeModel,
   removePcb,
 } from "../../helpers/api/wholeSale";
@@ -58,6 +59,17 @@ export const wholeSaleHook = () => {
         setloading(false);
       });
   }
+  async function deleteHdd(id: number) {
+    setloading(true);
+    removeHDD(id)
+      .then((data) => {
+        toast.success("HDD Uğurla silindi! ");
+        getList();
+      })
+      .finally(() => {
+        setloading(false);
+      });
+  }
 
 
 
@@ -97,6 +109,7 @@ function addHddProductManual(param: any) {
     getPcbList,
     addPcb,
     deletePcb,
-    addHddProductManual
+    addHddProductManual,
+    deleteHdd
   };
 };
