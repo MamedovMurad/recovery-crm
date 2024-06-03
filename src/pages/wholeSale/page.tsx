@@ -49,9 +49,9 @@ const WholeSale: React.FC<Props> = ({}) => {
          ))}
       </div>
       <HoverableRows
-        columns={[ "HDD Name", "Size", "FW", "Model","HDD-Number", "Family", "Heads", ]}
+        columns={[ "HDD Name", "Size", "FW", "Model", "Family", "Heads","HDD-Number", ]}
         list={list?.map((item: any) => ({ ...item }))}
-        names={[ "hdd_name", "size", "fw", "model", "Number", "family", "heads"]}
+        names={[ "hdd_name", "size", "fw", "model", "family", "heads", "Number",]}
         delete={deleteHdd}
       />
 
